@@ -10,7 +10,7 @@ function Map() {
     const map = new MapLibreGL.Map({
       container: 'map',
       style: 'https://tiles.versatiles.org/styles/colorful.json',
-      center: [7, 47],
+      center: [8.5428242, 47.3669311],
       zoom: 13
     });
 
