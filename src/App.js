@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { useEffect } from 'react';
+import MapLibreGL from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
+
+
+
+function Map() {
+  useEffect(() => {
+    const map = new MapLibreGL.Map({
+      container: 'map',
+      style: 'https://tiles.versatiles.org/styles/colorful.json',
+      center: [7, 47],
+      zoom: 13
+    });
+
+    map.on('style.load', () => {
+      new MapLibreGL.Marker()
+        .setLngLat([8.5428242, 47.3669311])
+        .addTo(map);
+    });
+  }, []);
+  return <div id="map" style={{ width: '100%', height: '100vh' }} />;
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Map />
     </div>
   );
 }
